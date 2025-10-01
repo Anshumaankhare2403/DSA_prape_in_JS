@@ -10,7 +10,7 @@ for (let i = 1; i < arr.length; i++) {
         arr[j + 1] = arr[j];// swap the elements 
         j--;
 
-    }
+    } S
 
     arr[j + 1] = key;// in this store value in  rigth place 
 
