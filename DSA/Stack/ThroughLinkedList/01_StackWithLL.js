@@ -9,6 +9,7 @@ class stackLL {
     constructor() {
         this.head = null;
         this.size = 0;
+        this.fsize = 5;
 
     }
 
@@ -21,14 +22,19 @@ class stackLL {
             this.size++;
         }
         else {
-            newNode.next = this.head;
-            this.head = newNode;
-            this.size++
+
+            if (this.size === this.fsize) {
+                console.log("overFlow");
+            } else {
+                newNode.next = this.head;
+                this.head = newNode;
+                this.size++
+            }
         }
     }
     peek() {
         if (this.head === null) {
-            console.log("Stack is empty");
+            console.log("UnderFlow");
         }
         else {
             console.log(this.head.data);
@@ -37,7 +43,7 @@ class stackLL {
 
     remove() {
         if (this.head === null) {
-            console.log("Stack is empty");
+            console.log("UnderFlow");
             return InsertData(10);
         }
         else {
@@ -60,7 +66,7 @@ class stackLL {
     display() {
         let temp = this.head;
         if (this.head === null) {
-            console.log("empty");
+            console.log("UnderFlow");
         }
         else {
             while (temp !== null) {
@@ -77,12 +83,15 @@ const ll = new stackLL();
 ll.InsertData(10);
 ll.InsertData(20);
 ll.InsertData(30);
+ll.InsertData(40);
+ll.InsertData(50);
+ll.InsertData(60);
 ll.display();
 ll.peek();
 ll.remove();
-ll.display()
+ll.display();
 
 ll.sizeofStack();
 
 ll.clearstack();
-ll.display()
+ll.display();
