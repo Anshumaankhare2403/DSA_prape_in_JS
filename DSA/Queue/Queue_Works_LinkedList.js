@@ -19,8 +19,8 @@ function enqueue(data) {
 
 function dequeue() {
     if (front === null) {
-        console.log("Queue Underflow!");
-        return;
+        console.log("Queue Underflow");
+
     }
     console.log(`${front.data} removed from queue`);
     front = front.next;
@@ -28,16 +28,14 @@ function dequeue() {
 }
 
 function isEmpty() {
-    if (front === null) {
-        console.log("Queue is Underflow!");
+    if (front === null && rear === null) {
+        console.log("Queue is Underflow");
     } else {
-        console.log("Queue is not Underflow!");
+        console.log("Queue is not Underflow");
     }
 }
 
-function isFull() {
-    console.log("Queue never overflow in linked list");
-}
+
 
 function Size() {
     let count = 0;
@@ -51,7 +49,7 @@ function Size() {
 
 function display() {
     if (front === null) {
-        console.log("Queue is Underflow!");
+        console.log("Queue is Underflow");
         return;
     }
     let temp = front;
@@ -73,5 +71,4 @@ display();
 dequeue();
 display();
 isEmpty();
-isFull();
 Size();
