@@ -1,27 +1,72 @@
 class node {
-    constructor(){
+    constructor(data) {
         this.data = data;
         this.left = null;
         this.right = null;
     }
 }
 
-class Tree{
-    constructor(){
+class Tree {
+    constructor() {
         this.root = null;
     }
 
-    insert(data){
+    insert(data) {
         const nn = new node(data);
-        if(this.root===null){
+        if (this.root === null) {
             this.root = nn;
             return;
         }
-        else{
-            let current  = this.root;
-            while(true){
-                if()
+        else {
+            let current = this.root;
+            while (current !== null) {
+                if (data < current.data) {
+
+                    if (current.left === null) {
+                        current.left = nn;
+                        return;
+                    }
+                    current = current.left;
+                }else{
+                    if(current.right===null){
+                        current.right = nn;
+                        return;
+                    }
+                    current= current.right;
+                }
             }
         }
     }
+
+    inorder(node = this.root){
+        if(!node) return;
+        this.inorder(node.left);
+        console.log(node.data);
+        this.inorder(node.right);
+
+    }
+    postorder(node=this.root){
+        if(!node) return;
+        this.postorder(node.left);
+        this.postorder(node.right);
+        console.log(node.data);
+    }
+    preorder(node = this.root){
+        if(!node) return;
+        console.log(node.data);
+        this.preorder(node.left);
+        this.preorder(node.right);
+    }
 }
+
+const T = new Tree();
+T.insert(10);
+T.insert(30);
+T.insert(20);
+T.insert(70);
+
+T.inorder();
+console.log("PostOrder:-");
+T.postorder();
+console.log("PreOrder:-");
+T.preorder();
