@@ -57,6 +57,20 @@ class Tree {
         this.preorder(node.left);
         this.preorder(node.right);
     }
+    leveorder(){
+        if(!this.root) return;
+        let qu = [];
+        qu.push(this.root);
+        let text = "";
+        while(qu.length>0){
+            let currentQue=qu.shift();
+            console.log(text+=currentQue.data);
+            if(currentQue.left) qu.push(currentQue.left);
+            if(currentQue.right) qu.push(currentQue.right);
+
+        }
+
+    }
 }
 
 const T = new Tree();
@@ -70,3 +84,5 @@ console.log("PostOrder:-");
 T.postorder();
 console.log("PreOrder:-");
 T.preorder();
+console.log("Level by level order Traversal ");
+T.leveorder();
