@@ -59,18 +59,22 @@ class Tree {
     }
     leveorder(){
         if(!this.root) return;
-        let qu = [];
+        let result =[];
+        let qu = [] ;
         qu.push(this.root);
-        let text = "";
-        while(qu.length>0){
-            let currentQue=qu.shift();
-            console.log(text+=currentQue.data);
-            if(currentQue.left) qu.push(currentQue.left);
-            if(currentQue.right) qu.push(currentQue.right);
 
+        while(qu.length>0){
+            let current = qu.shift();
+            result.push(current.data);
+
+            if(current.left) qu.push(current.left);
+            if(current.right) qu.push(current.right); 
         }
 
+        console.log(result.join(","));
     }
+
+    
 }
 
 const T = new Tree();
