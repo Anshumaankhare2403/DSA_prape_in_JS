@@ -74,12 +74,20 @@ class Tree {
         console.log(result.join(","));
     }
 
-    
+    higthofthetree(node = this.root){
+        if(!node) return -1;
+        let hl = this.higthofthetree(node.left);
+        let hr = this.higthofthetree(node.right);
+
+        return 1+ Math.max(hl,hr);
+    }
+
+
 }
 
 const T = new Tree();
-T.insert(10);
-T.insert(30);
+T.insert(100);
+T.insert(90);
 T.insert(20);
 T.insert(70);
 
@@ -90,3 +98,4 @@ console.log("PreOrder:-");
 T.preorder();
 console.log("Level by level order Traversal ");
 T.leveorder();
+console.log("higth of the tree is ",T.higthofthetree());
