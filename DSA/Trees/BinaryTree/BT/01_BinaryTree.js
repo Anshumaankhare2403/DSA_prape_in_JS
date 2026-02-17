@@ -74,20 +74,37 @@ class Tree {
         console.log(result.join(","));
     }
 
-    higthofthetree(node = this.root){
-        if(!node) return -1;
-        let hl = this.higthofthetree(node.left);
-        let hr = this.higthofthetree(node.right);
+    heigthofthetree(node=this.root){
+        if(!node)return -1;
+        let hl = this.heigthofthetree(node.left);
+        let hr = this.heigthofthetree(node.right);
+        return 1+Math.max(hl,hr);
 
-        return 1+ Math.max(hl,hr);
+    }
+
+    dimeteroftree(){
+        let maxdimeter = 0;
+        let heigth = (node)=>{
+            if(!node) return -1;
+            let lh = heigth(node.left);
+            let rh = heigth(node.right);
+            maxdimeter = Math.max(maxdimeter,lh+rh+2);
+            return 1+Math.max(lh,rh);
+        };
+
+        heigth(this.root);
+
+        return maxdimeter;
+
+
     }
 
 
 }
 
 const T = new Tree();
-T.insert(100);
-T.insert(90);
+T.insert(10);
+T.insert(30);
 T.insert(20);
 T.insert(70);
 
@@ -98,4 +115,5 @@ console.log("PreOrder:-");
 T.preorder();
 console.log("Level by level order Traversal ");
 T.leveorder();
-console.log("higth of the tree is ",T.higthofthetree());
+console.log("higth of the tree is ",T.heigthofthetree());
+console.log("Dimeter of the tree is ",T.dimeteroftree())
