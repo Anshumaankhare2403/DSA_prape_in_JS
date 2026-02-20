@@ -1,4 +1,4 @@
-class node{
+class node {
     constructor(data) {
         this.data = data;
         this.left = null;
@@ -7,29 +7,29 @@ class node{
     }
 }
 
-class ZigZag{
-    constructor(){
+class ZigZag {
+    constructor() {
         this.root = null;
     }
 
-    insertion(data){
+    insertion(data) {
         let nn = new node(data);
-        if(this.root===null){
-            this.root=nn;
+        if (this.root === null) {
+            this.root = nn;
             return;
         }
 
-        let current  = this.root;
-        while(current!==null){
-            if(data<current.data){
-                if(current.left===null){
+        let current = this.root;
+        while (current !== null) {
+            if (data < current.data) {
+                if (current.left === null) {
                     current.left = nn;
                     return;
                 }
                 current = current.left;
             }
-            else{
-                if(current.right===null){
+            else {
+                if (current.right === null) {
                     current.right = nn;
                     return;
 
@@ -41,9 +41,49 @@ class ZigZag{
 
     }
 
-    ZigZagTraver(node = this.root){
-        
+    ZigZagTraver() {
+        if (!this.root) return [];
+        let result = [];
+        let queue = [this.root];
+        let leftToRight = true;
+        while (queue.length > 0) {
+
+            let levelSize = queue.length;
+            let level = [];
+
+            for (let i = 0; i < levelSize; i++) {
+
+                let current = queue.shift();
+
+                if (leftToRight) {
+                    level.push(current.data);
+                } else {
+                    level.unshift(current.data);
+                }
+
+                if (current.left) queue.push(current.left);
+                if (current.right) queue.push(current.right);
+            }
+            result.push(level);
+
+            leftToRight = !leftToRight;  // flip direction
+        }
+
+        return result;
+
     }
 
 
 }
+
+let zig = new ZigZag();
+zig.insertion(10);
+zig.insertion(5);
+zig.insertion(3);
+zig.insertion(7);
+zig.insertion(30);
+zig.insertion(20);
+zig.insertion(70);
+
+console.log(zig.ZigZagTraver());
+
