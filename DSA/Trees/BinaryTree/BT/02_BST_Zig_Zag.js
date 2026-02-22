@@ -41,37 +41,57 @@ class ZigZag {
 
     }
 
-    ZigZagTraver() {
-        if (!this.root) return [];
-        let result = [];
-        let queue = [this.root];
-        let leftToRight = true;
-        while (queue.length > 0) {
+    // ZigZagTraver() {
+    //     if (!this.root) return [];
+    //     let result = [];
+    //     let queue = [this.root];
+    //     let leftToRight = true;
+    //     while (queue.length > 0) {
 
-            let levelSize = queue.length;
-            let level = [];
+    //         let levelSize = queue.length;
+    //         let level = [];
 
-            for (let i = 0; i < levelSize; i++) {
+    //         for (let i = 0; i < levelSize; i++) {
 
-                let current = queue.shift();
+    //             let current = queue.shift();
 
-                if (leftToRight) {
-                    level.push(current.data);
-                } else {
-                    level.unshift(current.data);
-                }
+    //             if (leftToRight) {
+    //                 level.push(current.data);
+    //             } else {
+    //                 level.unshift(current.data);
+    //             }
 
-                if (current.left) queue.push(current.left);
-                if (current.right) queue.push(current.right);
+    //             if (current.left) queue.push(current.left);
+    //             if (current.right) queue.push(current.right);
+    //         }
+    //         result.push(level);
+
+    //         leftToRight = !leftToRight;  // flip direction
+    //     }
+
+    //     return result;
+
+    // }
+    levelordertraversal(node = this.root){
+        if(!node) return;
+        let queue = [];
+        queue.push(this.root);
+        while(queue.length){
+
+            let current = queue.shift();
+            console.log(`level [${queue.length}]`,current.data);
+            if(current.left){
+                queue.push(current.left);
             }
-            result.push(level);
-
-            leftToRight = !leftToRight;  // flip direction
+            if(current.right){
+                queue.push(current.right);
+            }
         }
-
-        return result;
-
+        
     }
+
+    
+
 
 
 }
@@ -85,5 +105,7 @@ zig.insertion(30);
 zig.insertion(20);
 zig.insertion(70);
 
-console.log(zig.ZigZagTraver());
+// console.log(zig.ZigZagTraver());
 
+console.log("Level order ");
+zig.levelordertraversal();
