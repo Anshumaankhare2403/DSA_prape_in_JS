@@ -74,24 +74,8 @@ class verticalOrderTraversal {
             if(node.right) qu.push([hd+1,node.right]);
         }
 
-        arr.sort((a,b)=>a[0]-b[0]);
-
-        let currentHD = arr[0][0];
-        let col = []
-        for (const iterm of arr) {
-            let hd = iterm[0];
-            let value = iterm[1];
-
-            if(hd === currentHD){
-                col.push(value);
-            }else{
-                console.log(`HD[${currentHD}]->`,col.join(" "));
-                col = [value];
-                currentHD = hd;
-            }
-            
-        }
-        console.log(`HD[${currentHD}]->`,col.join(" "));
+        // arr.sort((a,b)=>a[0]-b[0]);
+        console.log(arr);
     }
 }
 
