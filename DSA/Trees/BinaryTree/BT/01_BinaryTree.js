@@ -81,6 +81,14 @@ class Tree {
         return 1+Math.max(hl,hr);
 
     }
+    HOTree(){
+        if(this.root === null) return 0 ;
+         let que =  [{node:this.root,hight:1}] ;
+         while(que.length>0){
+            let current = que.shift();
+         }                
+
+    }
 
     dimeteroftree(){
         let maxdimeter = 0;
