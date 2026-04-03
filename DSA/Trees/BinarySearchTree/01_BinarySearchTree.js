@@ -14,18 +14,23 @@ function BT(){
             return;
         }
         let q = [this.root];
-        while(q.length<0){
-            let current = q.splice();
-            console.log(current.data);
-            if(this.left===null){
-                q.push();
+        while(q.length>0){
+            let current = q.shift();
+            if(current.left===null){
+                q.push(current.left);
+                current.left = nn;
+            }
+            if(current.right===null){
+                q.push(current.right);
+                current.right = nn;
             }
         }
            
     }
 
-
 }
+
+
 
 // function BST(){
 

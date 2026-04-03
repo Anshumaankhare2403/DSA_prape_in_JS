@@ -5,8 +5,8 @@ for (let i = 0; i < n; i++) {
 }
 console.log("Insertion");
 console.log(arr);
-console.log("Remove at END:-");
-arr.length = arr.length-1
+console.log("Remove at END");
+arr.length = arr.length-1;
 console.log(arr);
 
 console.log("Remove at START ");
