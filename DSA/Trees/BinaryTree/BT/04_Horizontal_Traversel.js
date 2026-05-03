@@ -64,6 +64,46 @@ class HT{
             if(current.right) qu.push(current.right);
         }
     }
+    searching(data){
+          if(this.root===null){
+            return;
+          }
+          let current = this.root;
+
+          while(current!==null){
+            if(current.data===data){
+                console.log("data found",data)
+                return true;
+            }
+            else if(current.data>data){
+                current = current.left;
+            }
+            else{
+                current = current.right;
+            }
+          }
+
+          return false ;
+    }
+    descanding(node = this.root){
+        if(!node)return;
+
+        this.descanding(node.right);
+        console.log(node.data);
+        this.descanding(node.left);
+
+    }
+
+    leaf(node = this.root){
+        if(!node){
+            return; 
+        }
+        if(node.left=== null && node.right === null){
+           console.log(node.data);
+        }
+        this.leaf(node.left);
+        this.leaf(node.right);
+    }
     
 
 
@@ -83,3 +123,11 @@ console.log("POST ORDER TRAVERSAL");
 TR.PostorderTrave();
 console.log("LEVEL ORDER TRAVERSAL");
 TR.levelOrderTraversal();
+console.log("Searching  ");
+console.log(TR.searching(3));
+console.log("descanding order ");
+TR.descanding();
+
+console.log("leaf");
+
+TR.leaf();
