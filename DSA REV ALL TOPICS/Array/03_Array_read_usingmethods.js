@@ -13,6 +13,5 @@ arr.map((i)=>{
 })
 console.log("other way using filter")
 arr.filter((i)=>{
-    i++
-    console.log(i)
+    i%2==0?console.log("EVEN = ",i):console.log("ODD = ",i);
 })
