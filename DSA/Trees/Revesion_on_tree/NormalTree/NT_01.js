@@ -23,11 +23,16 @@ class node{
 
 
 class G_Tree{
-    constructor(){
+    constructor(rootdata){
+        this.root  = new node(rootdata);
+    }
+
+    insertdata(){
 
     }
 
-    
+
+
 }
 
 
